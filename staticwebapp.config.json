@@ -1,11 +1,15 @@
 {
   "routes": [
     {
+      "route": "/",
+      "rewrite": "/public/index.html"
+    },
+    {
       "route": "/about",
       "rewrite": "/public/about.html"
     },
     {
-      "route": "/contact", 
+      "route": "/contact",
       "rewrite": "/public/contact.html"
     },
     {
@@ -19,10 +23,19 @@
     {
       "route": "/portal/*",
       "allowedRoles": ["customer", "admin"]
+    },
+    {
+      "route": "/api/*",
+      "methods": ["GET", "POST", "PUT", "DELETE"]
     }
   ],
   "navigationFallback": {
-    "rewrite": "/index.html",
+    "rewrite": "/public/index.html",
     "exclude": ["/api/*", "/internal/*", "/portal/*", "*.{css,js,png,jpg,jpeg,gif,svg,ico,woff,woff2,ttf,eot}"]
+  },
+  "mimeTypes": {
+    ".html": "text/html; charset=utf-8",
+    ".js": "text/javascript; charset=utf-8",
+    ".css": "text/css; charset=utf-8"
   }
 }

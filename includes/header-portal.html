@@ -9,8 +9,8 @@
       <li><a href="/portal/profile">Profile</a></li>
     </ul>
     <ul>
-      <li><span x-text="$store.user.name || 'Customer'">Customer</span></li>
-      <li><a href="#" role="button" class="secondary" onclick="logout()">Logout</a></li>
+      <li><span id="user-name" x-text="$store.user?.name || 'Customer'">Customer</span></li>
+      <li><a href="/.auth/logout?post_logout_redirect_uri=/" role="button" class="secondary">Logout</a></li>
     </ul>
   </nav>
 </header>
