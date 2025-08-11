@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Portal</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/public.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <main x-data="{ loading: false }">
+        <section class="hero">
+            <h1>Welcome to Company Customer Portal</h1>
+            <p>Your trusted partner for innovative solutions</p>
+            <button class="cta-button" onclick="window.location='/products'">
+                Explore Dashboard
+            </button>
+        </section>
+    </main>
+    
+    <script src="/js/header-loader.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<header>
+  <nav class="container">
+    <ul>
+      <li><strong>Customer Portal</strong></li>
+    </ul>
+    <ul>
+      <li><a href="/portal">Home</a></li>
+      <li><a href="/portal/dashboard">Dashboard</a></li>
+      <li><a href="/portal/profile">Profile</a></li>
+    </ul>
+    <ul>
+      <li><span x-text="$store.user.name || 'Customer'">Customer</span></li>
+      <li><a href="#" role="button" class="secondary" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+</header>

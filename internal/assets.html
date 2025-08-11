@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Tracker - Internal Portal</title>
+    <!-- Pico CSS for instant styling -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <!-- Your custom CSS (optional overrides) -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/internal.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <main class="container" x-data="assetTracker()">
+        <header>
+            <hgroup>
+                <h1>Asset Tracker</h1>
+                <p>Manage your company assets</p>
+            </hgroup>
+            <p>
+                <a href="#" role="button" @click="showAddForm = true">Add Asset</a>
+            </p>
+        </header>
+        
+        <section x-show="!loading">
+            <div class="grid">
+                <template x-for="asset in assets" :key="asset.id">
+                    <article>
+                        <header>
+                            <h3 x-text="asset.name"></h3>
+                        </header>
+                        <p><strong>Type:</strong> <span x-text="asset.type"></span></p>
+                        <p><strong>Status:</strong> <span x-text="asset.status"></span></p>
+                        <p><strong>Location:</strong> <span x-text="asset.location"></span></p>
+                        <footer>
+                            <a href="#" role="button" class="secondary" @click="editAsset(asset)">Edit</a>
+                            <a href="#" role="button" class="contrast" @click="deleteAsset(asset.id)">Delete</a>
+                        </footer>
+                    </article>
+                </template>
+            </div>
+        </section>
+        
+        <!-- Add Asset Dialog -->
+        <dialog x-bind:open="showAddForm">
+            <article>
+                <header>
+                    <h2>Add New Asset</h2>
+                </header>
+                <form @submit.prevent="addAsset">
+                    <input type="text" x-model="newAsset.name" placeholder="Asset Name" required>
+                    <input type="text" x-model="newAsset.type" placeholder="Asset Type" required>
+                    <input type="text" x-model="newAsset.location" placeholder="Location" required>
+                    <select x-model="newAsset.status" required>
+                        <option value="">Select Status</option>
+                        <option value="active">Active</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="retired">Retired</option>
+                    </select>
+                </form>
+                <footer>
+                    <button type="submit" form="assetForm" @click="addAsset">Add Asset</button>
+                    <button class="secondary" @click="showAddForm = false">Cancel</button>
+                </footer>
+            </article>
+        </dialog>
+    </main>
+    
+    <script src="/js/header-loader.js"></script>
+    <script src="/js/api-client.js"></script>
+    <script>
+        function assetTracker() {
+            return {
+                assets: [],
+                loading: true,
+                showAddForm: false,
+                newAsset: {
+                    name: '',
+                    type: '',
+                    location: '',
+                    status: ''
+                },
+                
+                async init() {
+                    await this.loadAssets();
+                },
+                
+                async loadAssets() {
+                    try {
+                        this.loading = true;
+                        this.assets = await ApiClient.getAssets();
+                    } catch (error) {
+                        console.error('Failed to load assets:', error);
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+                
+                async addAsset() {
+                    try {
+                        await ApiClient.createAsset(this.newAsset);
+                        this.showAddForm = false;
+                        this.newAsset = { name: '', type: '', location: '', status: '' };
+                        await this.loadAssets();
+                    } catch (error) {
+                        console.error('Failed to add asset:', error);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
