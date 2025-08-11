@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Portal</title>
+    <title>Dashboard - Portal</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/portal.css">
     <script src="/js/auth-utils.js"></script>
@@ -14,28 +14,11 @@
     
     <main x-data="{ loading: false }">
         <section class="hero">
-            <h1>Welcome to Company Customer Portal</h1>
+            <h1>Welcome to Company Customer Dashboard</h1>
             <p>Your trusted partner for innovative solutions</p>
             <button class="cta-button" onclick="window.location='/home'">
                 Return Home
             </button>
-        </section>
-        
-        <section class="features" x-show="!loading">
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Quality Products</h3>
-                    <p>Industry-leading solutions for your needs</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Expert Support</h3>
-                    <p>24/7 customer service and technical assistance</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Innovation</h3>
-                    <p>Cutting-edge technology and continuous improvement</p>
-                </div>
-            </div>
         </section>
     </main>
     

@@ -12,16 +12,37 @@
 <body>
     <div id="header-container"></div>
     
-    <main x-data="{ loading: false }">
+    <main class="container" x-data="{ loading: false }">
         <section class="hero">
-            <h1>Welcome to Company Customer Portal</h1>
-            <p>Your trusted partner for innovative solutions</p>
-            <button class="cta-button" onclick="window.location='/products'">
-                Explore Dashboard
-            </button>
+            <hgroup>
+                <h1>Welcome to My Company</h1>
+                <p>Home page of My Company Internal Customer Portal</p>
+            </hgroup>
+        </section>
+        
+        <section class="features" x-show="!loading">
+            <div class="grid">
+                <article>
+                    <header>
+                        <h3>Check your Orders</h3>
+                    </header>
+                    <p>
+                        <a href="/orders" role="button">Check the status and leave comments on past orders.</a>
+                    </p>
+                </article>
+                <article>
+                    <header>
+                        <h3>New Order</h3>
+                    </header>
+                    <p>
+                        <a href="/new" role="button">Add a new order.</a>
+                    </p>
+                </article>
+            </div>
         </section>
     </main>
     
     <script src="/js/header-loader.js"></script>
+
 </body>
 </html>
