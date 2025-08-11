@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Tracker - Internal Portal</title>
+    <!-- Pico CSS for instant styling -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <!-- Your custom CSS (optional overrides) -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/internal.css">
+    <script src="/js/auth-utils.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <main class="container" x-data="{ loading: false }">
+        <section class="hero">
+            <hgroup>
+                <h1>Welcome to My Company</h1>
+                <p>Your trusted partner for innovative solutions</p>
+            </hgroup>
+            <p>
+                <a href="/products" role="button">Explore Products</a>
+            </p>
+        </section>
+        
+        <section class="features" x-show="!loading">
+            <div class="grid">
+                <article>
+                    <header>
+                        <h3>Quality Products</h3>
+                    </header>
+                    <p>Industry-leading solutions for your needs</p>
+                </article>
+                <article>
+                    <header>
+                        <h3>Expert Support</h3>
+                    </header>
+                    <p>24/7 customer service and technical assistance</p>
+                </article>
+                <article>
+                    <header>
+                        <h3>Innovation</h3>
+                    </header>
+                    <p>Cutting-edge technology and continuous improvement</p>
+                </article>
+            </div>
+        </section>
+    </main>
+    
+    <script src="/js/header-loader.js"></script>
+
+</body>
+</html>
