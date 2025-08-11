@@ -1,0 +1,6 @@
+/* portal.css */
+body {
+  background: linear-gradient(120deg, #ffecd2, #fcb69f);
+  background-attachment: fixed;
+  color: #222;
+}
